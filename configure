@@ -20,9 +20,11 @@ target_write_info=3
 target_write_help=4
 
 project_name='SDL_Shift_game'
+compiler_name="gcc"
 debug_compiler_flags='-g -Wall -DDEBUG'
 release_compiler_flags='-Wall -O3'
-library_list='-lSDL -lm'
+library_list='-lSDL2 -lm'
+output_bin_file='sdl_shift'
 
 source_files_list=( "sdl_serv" "sdl_simple_draw"
   "wild_math" "draws" "shift")
@@ -114,8 +116,8 @@ write_makefile_title()
 
 write_constant_section()
 {
-  echo "CC=gcc" >> Makefile
-  echo "PROGRAM_NAME=c2048" >> Makefile
+  echo "CC=$compiler_name" >> Makefile
+  echo "PROGRAM_NAME=$output_bin_file" >> Makefile
   if [ $1 -eq $target_debug_version ]
   then
     echo "CFLAGS=$debug_compiler_flags" >> Makefile
