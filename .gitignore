@@ -1,0 +1,10 @@
+# sdl_shift_game GIT ignoring file
+
+*~
+Makefile
+
+./src/*.o
+./src/*~
+./src/sdl_shift
+
+./bin/*
