@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 //  SDL_Event app_event;
 
   app_init(main_win_caption, &main_win, &main_rend);
-  printf("SDL_clock init...\n");
+  printf("SDL_Shift init...\n");
 
   shift_run(main_rend);
 

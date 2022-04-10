@@ -2,9 +2,12 @@
 #define DRAWS_H
 
 enum {
-  cell_width = 200,
-  cell_height = 150,
-  cell_chamfer = 30,
+#ifdef DEBUG
+  debug_cross_size = 50,
+#endif
+  cell_width = 250,
+  cell_height = 120,
+  cell_chamfer = 5,
   cell_gap = 10,
 };
 

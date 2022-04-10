@@ -3,8 +3,8 @@
 *~
 Makefile
 
-./src/*.o
-./src/*~
-./src/sdl_shift
+src/*.o
+src/*~
+src/sdl_shift
 
-./bin/*
+bin
