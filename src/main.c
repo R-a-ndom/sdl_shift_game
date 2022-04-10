@@ -9,6 +9,8 @@
 #include "wild_math.h"
 #include "sdl_simple_draw.h"
 #include "sdl_serv.h"
+
+#include "base.h"
 #include "shift.h"
 
 const char main_win_caption[] = "SHIFT (SDL 2.0 demo)";

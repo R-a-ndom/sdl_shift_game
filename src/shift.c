@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 
+#include "base.h"
 #include "draws.h"
 #include "shift.h"
 
