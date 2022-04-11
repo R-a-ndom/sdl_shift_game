@@ -10,23 +10,41 @@
 static const SDL_Point field_draw_start = {125, 105};
 
 #ifdef DEBUG
-static void debug_draw_cross(SDL_Renderer* rend)
+
+void debug_next_cross_state(cross_state* state)
 {
-  SDL_SetRenderDrawColor(rend, 150, 220, 150, 255);
-  SDL_RenderDrawLine(rend,
-                     HALF_SCREEN_WIDTH, HALF_SCREEN_HEIGHT - debug_cross_size,
-                     HALF_SCREEN_WIDTH, HALF_SCREEN_HEIGHT + debug_cross_size);
-  SDL_RenderDrawLine(rend,
-                     HALF_SCREEN_WIDTH - debug_cross_size, HALF_SCREEN_HEIGHT,
-                     HALF_SCREEN_WIDTH + debug_cross_size, HALF_SCREEN_HEIGHT);
+  if (state->growing == cross_grow) {
+    if (state->size == debug_cross_max) {
+      state->growing = cross_shrink;
+    } else {
+      (state->size)++;
+    }
+  } else {
+    if (state->size == debug_cross_min) {
+      state->growing = cross_grow;
+    } else {
+      (state->size)--;
+    }
+  }
 }
 
+void debug_draw_cross(SDL_Renderer* rend,
+                             cross_state c_state)
+{
+  SDL_SetRenderDrawColor(rend, 220, 120, 120, 255); // yellow cross in middle
+  SDL_RenderDrawLine(rend,
+                     HALF_SCREEN_WIDTH, HALF_SCREEN_HEIGHT - c_state.size,
+                     HALF_SCREEN_WIDTH, HALF_SCREEN_HEIGHT + c_state.size);
+  SDL_RenderDrawLine(rend,
+                     HALF_SCREEN_WIDTH - c_state.size, HALF_SCREEN_HEIGHT,
+                     HALF_SCREEN_WIDTH + c_state.size, HALF_SCREEN_HEIGHT);
+}
+
+#endif
 
 void draw_statics(SDL_Renderer* rend)
 {
-#ifdef DEBUG
-  debug_draw_cross(rend);
-#endif
+
 }
 
 static int calc_cell_horiz_pos_start(int pos) {
@@ -57,8 +75,9 @@ static void draw_one_cell(SDL_Renderer* rend,
                            cell_chamfer);
 }
 
-void draw_all_field(SDL_Renderer* rend, game_field field)
+void draw_all_field(SDL_Renderer* rend, const game_field field)
 {
+  SDL_SetRenderDrawColor(rend, 100, 100, 220, 255);
   int i, j;
   for(i = 0; i < field_size; i++) {
     for(j = 0; j < field_size; j++) {
@@ -68,5 +87,3 @@ void draw_all_field(SDL_Renderer* rend, game_field field)
     }
   }
 }
-
-#endif

@@ -36,7 +36,7 @@ void app_init(const char win_caption[],
                               SDL_WINDOWPOS_CENTERED,
                               main_win_width,
                               main_win_height,
-                              SDL_WINDOW_FULLSCREEN);
+                              SDL_WINDOW_SHOWN);
   if (*app_win == NULL)
   {
      fprintf(stderr, "SDL window creating ERROR : %s\n", SDL_GetError());

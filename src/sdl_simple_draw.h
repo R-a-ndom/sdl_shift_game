@@ -1,6 +1,8 @@
 #ifndef SDL_SIMPLE_DRAW_H
 #define SDL_SIMPLE_DRAW_H
 
+#define FPS_50 50
+
 void sdl_draw_arc(SDL_Renderer* rend,
                   int center_x, int center_y, int radius,
                   double angle_start, double angle_end);
