@@ -33,15 +33,15 @@ void shift_run(SDL_Renderer* rend) {
   app_is_running = SDL_TRUE;
   while (app_is_running == SDL_TRUE) {
 
-    SDL_PollEvent(&main_ev);
-    switch (main_ev.type) {
-      case SDL_QUIT: {
-        app_is_running = SDL_FALSE;
-        printf("QUIT event!\n");
-        break;
+    while ( SDL_PollEvent(&main_ev) ) {
+      switch (main_ev.type) {
+        case SDL_QUIT: {
+          app_is_running = SDL_FALSE;
+          printf("QUIT event!\n");
+          break;
+        }
       }
-    }
-
+    }  // while event...
     SDL_SetRenderDrawColor(rend, 0, 0, 0, 255);
     SDL_RenderClear(rend);
 
@@ -54,5 +54,5 @@ void shift_run(SDL_Renderer* rend) {
 
     SDL_RenderPresent(rend);
     SDL_Delay(FPS_50);
-  }
+  } // while app_is_running...
 }

@@ -18,6 +18,12 @@ typedef struct cross_state {
 #endif
 
 enum {
+  big_frame_width = 1060,
+  big_frame_height = 540,
+  big_frame_chamfer = 17,
+};
+
+enum {
   cell_width = 250,
   cell_height = 120,
   cell_chamfer = 5,

@@ -8,6 +8,7 @@
 #include "draws.h"
 
 static const SDL_Point field_draw_start = {125, 105};
+static const SDL_Point big_frame_draw_start = {110, 90};
 
 #ifdef DEBUG
 
@@ -44,7 +45,12 @@ void debug_draw_cross(SDL_Renderer* rend,
 
 void draw_statics(SDL_Renderer* rend)
 {
-
+  SDL_SetRenderDrawColor(rend, 220, 220, 120, 255); // yellow cross in middle
+  sdl_draw_chamfered_frame(rend,
+                           big_frame_draw_start,
+                           big_frame_width,
+                           big_frame_height,
+                           big_frame_chamfer);
 }
 
 static int calc_cell_horiz_pos_start(int pos) {
