@@ -18,6 +18,35 @@ static void copy_field(const game_field source, game_field dest)
   }
 }
 
+static int handle_keyboard_event(SDL_Event* event) {
+  switch ( event->key.keysym.scancode ) {
+    case SDL_SCANCODE_UP : {
+      return state_move_up;
+      break;
+    }
+    case SDL_SCANCODE_DOWN : {
+      return state_move_down;
+      break;
+    }
+    case SDL_SCANCODE_LEFT : {
+      return state_move_left;
+      break;
+    }
+    case SDL_SCANCODE_RIGHT : {
+      return state_move_right;
+      break;
+    }
+    case SDL_SCANCODE_ESCAPE : {
+      return state_quit;
+      break;
+    }
+    default : {
+      break;
+    }
+  } /* switch */
+  return state_continue;
+}
+
 void shift_run(SDL_Renderer* rend) {
   SDL_Event main_ev;
   int app_state;
@@ -41,6 +70,10 @@ void shift_run(SDL_Renderer* rend) {
         case SDL_QUIT: {
           app_state = state_quit;
           printf("QUIT event!\n");
+          break;
+        }
+        case SDL_KEYDOWN: {
+          app_state = handle_keyboard_event(&main_ev);
           break;
         }
       }
