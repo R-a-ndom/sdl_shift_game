@@ -20,23 +20,26 @@ static void copy_field(const game_field source, game_field dest)
 
 void shift_run(SDL_Renderer* rend) {
   SDL_Event main_ev;
-  SDL_bool app_is_running;
+  int app_state;
   game_field main_field;
 #ifdef DEBUG
   cross_state debug_cross_state;
   debug_cross_state.size = debug_cross_min;
   debug_cross_state.growing = cross_grow;
-
 #endif
 
   copy_field(start_field, main_field);
-  app_is_running = SDL_TRUE;
-  while (app_is_running == SDL_TRUE) {
+
+/* MAIN CYCLE */
+
+  while (app_state != state_quit) {
+
+    app_state = state_continue;
 
     while ( SDL_PollEvent(&main_ev) ) {
       switch (main_ev.type) {
         case SDL_QUIT: {
-          app_is_running = SDL_FALSE;
+          app_state = state_quit;
           printf("QUIT event!\n");
           break;
         }
