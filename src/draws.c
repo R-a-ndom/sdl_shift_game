@@ -3,6 +3,7 @@
 #include "sdl_serv.h"
 #include "sdl_simple_draw.h"
 #include "wild_math.h"
+#include "sdl_digit_seven.h"
 
 #include "base.h"
 #include "draws.h"
@@ -70,15 +71,22 @@ static int calc_cell_vert_pos_start(int pos) {
 }
 
 static void draw_one_cell(SDL_Renderer* rend,
-                          int h_pos, int v_pos)
+                          int h_pos, int v_pos, int value)
 {
   SDL_Point cell_draw_start;
+  SDL_Point value_draw_start;
+  
   cell_draw_start.x = calc_cell_horiz_pos_start(h_pos);
   cell_draw_start.y = calc_cell_vert_pos_start(v_pos);
+
+  value_draw_start.x = cell_draw_start.x + cell_value_draw_gap;
+  value_draw_start.y = cell_draw_start.y + cell_value_draw_gap;
+
   sdl_draw_chamfered_frame(rend,
                            cell_draw_start,
                            cell_width, cell_height,
                            cell_chamfer);
+  sdl_draw_seven_digit_number(rend, value_draw_start, cell_value_digit_length, value);
 }
 
 void draw_all_field(SDL_Renderer* rend, const game_field field)
@@ -88,7 +96,7 @@ void draw_all_field(SDL_Renderer* rend, const game_field field)
   for(i = 0; i < field_size; i++) {
     for(j = 0; j < field_size; j++) {
       if ( field[i][j] != cell_empty ) {
-        draw_one_cell(rend, i, j);
+        draw_one_cell(rend, i, j, field[i][j]);
       }
     }
   }

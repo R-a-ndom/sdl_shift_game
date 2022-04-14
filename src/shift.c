@@ -2,11 +2,15 @@
 
 #include "base.h"
 #include "sdl_simple_draw.h"
+#include "sdl_digit_seven.h"
 #include "draws.h"
 #include "shift.h"
 
 const game_field start_field =
-  {{1,1,1,1},{1,1,1,1},{1,1,1,1},{1,1,1,0}};
+  { { 15, 12, 13, 14 },
+    { 15, 16, 17, 18 },
+    { 19, 10, 11, 12 }, 
+    { 13, 14, 15, 0 } };
 
 static void copy_field(const game_field source, game_field dest)
 {

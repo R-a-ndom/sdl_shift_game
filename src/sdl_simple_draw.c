@@ -20,12 +20,10 @@ void sdl_draw_arc(SDL_Renderer* rend,
 {
   SDL_Point* arc_points;
   int arc_points_count;
-
   polar_coords current_point;
+  int i;
 
   current_point.radius = rad;
-
-  int i;
 
   arc_points_count = ((angle_end - angle_start) / angle_step) + 1;
 
@@ -33,11 +31,13 @@ void sdl_draw_arc(SDL_Renderer* rend,
 
   double current_angle;
 
-  for(i = 0, current_angle = angle_start; i < arc_points_count; i++, current_angle += angle_step)
-  {
+  for(i = 0,
+      current_angle = angle_start; i < arc_points_count;
+      i++, current_angle += angle_step) {
     current_point.alpha = deg2rad(current_angle);
     rect_from_polar(center_x, center_y,
-                    &current_point, &arc_points[i].x, &arc_points[i].y);
+                    &current_point,
+                    &arc_points[i].x, &arc_points[i].y);
   }
   SDL_RenderDrawLines(rend, arc_points, arc_points_count);
   free(arc_points);
@@ -109,7 +109,6 @@ void sdl_draw_chamfered_frame(SDL_Renderer* rend, SDL_Point frame_start,
                      frame_start.y + frame_height - chamfer,
                      frame_start.x + frame_width - chamfer,
                      frame_start.y + frame_height);
-
 }
 
 void sdl_draw_filleted_frame(SDL_Renderer* rend, SDL_Point frame_start,
@@ -133,5 +132,4 @@ void sdl_draw_filleted_frame(SDL_Renderer* rend, SDL_Point frame_start,
   arc_center.x = frame_start.x + frame_width - radius;
   arc_center.y = frame_start.y + frame_height - radius;
   sdl_draw_arc(rend, arc_center.x, arc_center.y, radius, 0.0, 90.0);
-
 }

@@ -28,6 +28,8 @@ enum {
   cell_height = 120,
   cell_chamfer = 5,
   cell_gap = 10,
+  cell_value_draw_gap = 15,
+  cell_value_digit_length = 40,
 };
 
 #ifdef DEBUG
