@@ -11,7 +11,7 @@
 static const SDL_Point field_draw_start = {125, 105};
 static const SDL_Point big_frame_draw_start = {110, 90};
 
-#ifdef DEBUG
+#ifdef DEBUG /* debug mode - drawing little cross in the screen middle */
 
 void debug_next_cross_state(cross_state* state)
 {
@@ -46,7 +46,7 @@ void debug_draw_cross(SDL_Renderer* rend,
 
 void draw_statics(SDL_Renderer* rend)
 {
-  SDL_SetRenderDrawColor(rend, 220, 220, 120, 255); // yellow cross in middle
+  SDL_SetRenderDrawColor(rend, 220, 220, 120, 255);
   sdl_draw_chamfered_frame(rend,
                            big_frame_draw_start,
                            big_frame_width,
@@ -75,18 +75,24 @@ static void draw_one_cell(SDL_Renderer* rend,
 {
   SDL_Point cell_draw_start;
   SDL_Point value_draw_start;
-  
+
   cell_draw_start.x = calc_cell_horiz_pos_start(h_pos);
   cell_draw_start.y = calc_cell_vert_pos_start(v_pos);
 
   value_draw_start.x = cell_draw_start.x + cell_value_draw_gap;
   value_draw_start.y = cell_draw_start.y + cell_value_draw_gap;
 
+  if ( value < 10 ) {
+    value_draw_start.x += cell_value_digit_length ;
+  }
+
   sdl_draw_chamfered_frame(rend,
                            cell_draw_start,
                            cell_width, cell_height,
                            cell_chamfer);
-  sdl_draw_seven_digit_number(rend, value_draw_start, cell_value_digit_length, value);
+  sdl_draw_seven_digit_number(rend,
+                              value_draw_start,
+                              cell_value_digit_length, value);
 }
 
 void draw_all_field(SDL_Renderer* rend, const game_field field)
@@ -96,7 +102,7 @@ void draw_all_field(SDL_Renderer* rend, const game_field field)
   for(i = 0; i < field_size; i++) {
     for(j = 0; j < field_size; j++) {
       if ( field[i][j] != cell_empty ) {
-        draw_one_cell(rend, i, j, field[i][j]);
+        draw_one_cell(rend, i, j, field[j][i]);
       }
     }
   }

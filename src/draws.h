@@ -2,7 +2,7 @@
 #define DRAWS_H
 
 
-#ifdef DEBUG
+#ifdef DEBUG  /* debug mode - little cross in middle */
 enum {
   cross_shrink =  0,
   cross_grow   =  1,

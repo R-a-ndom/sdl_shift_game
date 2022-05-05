@@ -18,7 +18,7 @@ const short int all_digits_info[MAX_DIGITS][MAX_SEGMENTS] =
   { 1, 0, 1, 1, 1, 0, 1 },   // 2
   { 1, 0, 1, 1, 0, 1, 1 },   // 3
   { 0, 1, 1, 1, 0, 1, 0 },   // 4
-  { 1, 1, 0, 1, 0, 1, 1 },   // 5  
+  { 1, 1, 0, 1, 0, 1, 1 },   // 5
   { 1, 1, 0, 1, 1, 1, 1 },   // 6
   { 1, 0, 1, 0, 0, 1, 0 },   // 7
   { 1, 1, 1, 1, 1, 1, 1 },   // 8
@@ -26,23 +26,16 @@ const short int all_digits_info[MAX_DIGITS][MAX_SEGMENTS] =
 
 static int generate_digit_sequence(unsigned int src_num, digit_sequence seq)
 {
-  int i;
-  i = 0;
-  
+  int i = 0;
+
   if ( src_num >= 10 ) {
     do {
-#ifdef DEBUG
-    	printf(" %d ", src_num);
-#endif
-    	seq[i] = src_num % 10;
+      seq[i] = src_num % 10;
       i++;
       src_num /= 10;
     } while (src_num > 10); // DO-WHILE
   }
   seq[i] = src_num;
-#ifdef DEBUG
-  printf(" %d | ", src_num);
-#endif
   i++;
   return i;
 }
@@ -65,8 +58,9 @@ static void draw_one_digit(SDL_Renderer* rend, SDL_Point digit_draw_start, int d
 {
   int i;
   for(i = 0; i < MAX_SEGMENTS; i++) {
-  	 if (all_digits_info[digit][i] == 1) {
-      draw_one_segment(rend, digit_draw_start, digit_length, all_segments_info[i]);
+    if (all_digits_info[digit][i] == 1) {
+      draw_one_segment(rend, digit_draw_start,
+                       digit_length, all_segments_info[i]);
     }
   }
 }
@@ -81,7 +75,7 @@ void sdl_draw_seven_digit_number(SDL_Renderer* rend,
   int digit_count;
   SDL_Point digit_draw_pos;
   digit_sequence seq;
-  
+
   i = 0;
   digit_gap = digit_length / 5;
   digit_count = generate_digit_sequence(src_number, seq);

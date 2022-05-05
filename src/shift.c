@@ -7,10 +7,10 @@
 #include "shift.h"
 
 const game_field start_field =
-  { { 15, 12, 13, 14 },
-    { 15, 16, 17, 18 },
-    { 19, 10, 11, 12 }, 
-    { 13, 14, 15, 0 } };
+  { {  1,  2,  3,  4 },
+    {  5,  6,  7,  8 },
+    {  9, 10, 11, 12 }, 
+    { 13, 14, 15,  0 } };
 
 static void copy_field(const game_field source, game_field dest)
 {
@@ -55,7 +55,7 @@ void shift_run(SDL_Renderer* rend) {
   SDL_Event main_ev;
   int app_state;
   game_field main_field;
-#ifdef DEBUG
+#ifdef DEBUG  /* debug mode - draw a littse cross in screen middle */
   cross_state debug_cross_state;
   debug_cross_state.size = debug_cross_min;
   debug_cross_state.growing = cross_grow;
