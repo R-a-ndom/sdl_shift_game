@@ -4,8 +4,23 @@
 
 #include "sdl_serv.h"
 
+/* screen size */
+
 const int main_win_height = 720;
 const int main_win_width = 1280;
+
+/* colors in 16-color palette */
+
+const rgb_color_def c16_black = {   0,   0,   0 };
+
+const rgb_color_def c16_red     = { 255,   0,   0 };
+const rgb_color_def c16_green   = {   0, 255,   0 };
+const rgb_color_def c16_blue    = {   0,   0, 255 };
+const rgb_color_def c16_yellow  = { 255, 255,   0 };
+const rgb_color_def c16_magenta = { 255,   0, 255 };
+const rgb_color_def c16_cyan    = {   0, 255, 255 };
+
+const rgb_color_def c16_white = { 255, 255, 255 };
 
 int app_close(SDL_Window* app_win, SDL_Renderer* app_rend, int exit_code)
 {

@@ -33,7 +33,7 @@ void debug_next_cross_state(cross_state* state)
 void debug_draw_cross(SDL_Renderer* rend,
                              cross_state c_state)
 {
-  SDL_SetRenderDrawColor(rend, 220, 120, 120, 255); // yellow cross in middle
+  SDL_CHANGE_COLOR(rend, c16_red, ALPHA_OPAQUE);
   SDL_RenderDrawLine(rend,
                      HALF_SCREEN_WIDTH, HALF_SCREEN_HEIGHT - c_state.size,
                      HALF_SCREEN_WIDTH, HALF_SCREEN_HEIGHT + c_state.size);
@@ -46,7 +46,7 @@ void debug_draw_cross(SDL_Renderer* rend,
 
 void draw_statics(SDL_Renderer* rend)
 {
-  SDL_SetRenderDrawColor(rend, 220, 220, 120, 255);
+  SDL_CHANGE_COLOR(rend, c16_magenta, ALPHA_OPAQUE);
   sdl_draw_chamfered_frame(rend,
                            big_frame_draw_start,
                            big_frame_width,
@@ -97,7 +97,7 @@ static void draw_one_cell(SDL_Renderer* rend,
 
 void draw_all_field(SDL_Renderer* rend, const game_field field)
 {
-  SDL_SetRenderDrawColor(rend, 100, 100, 220, 255);
+  SDL_CHANGE_COLOR(rend, c16_cyan, ALPHA_OPAQUE);
   int i, j;
   for(i = 0; i < field_size; i++) {
     for(j = 0; j < field_size; j++) {

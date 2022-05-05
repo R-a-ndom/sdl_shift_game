@@ -7,8 +7,9 @@
 #include <stdlib.h>
 
 #include "wild_math.h"
-#include "sdl_simple_draw.h"
+
 #include "sdl_serv.h"
+#include "sdl_simple_draw.h"
 #include "sdl_digit_seven.h"
 
 #include "base.h"
