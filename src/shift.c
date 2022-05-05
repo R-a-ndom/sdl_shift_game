@@ -1,16 +1,19 @@
 #include <SDL2/SDL.h>
 
 #include "base.h"
+#include "sdl_serv.h"
 #include "sdl_simple_draw.h"
 #include "sdl_digit_seven.h"
 #include "draws.h"
 #include "shift.h"
 
-const game_field start_field =
+const game_field source_field =
   { {  1,  2,  3,  4 },
     {  5,  6,  7,  8 },
     {  9, 10, 11, 12 }, 
     { 13, 14, 15,  0 } };
+
+const cell_pos begin_empty_cell_pos = { 3, 3 };
 
 static void copy_field(const game_field source, game_field dest)
 {
@@ -61,7 +64,7 @@ void shift_run(SDL_Renderer* rend) {
   debug_cross_state.growing = cross_grow;
 #endif
 
-  copy_field(start_field, main_field);
+  copy_field(source_field, main_field);
 
 /* MAIN CYCLE */
 
@@ -82,7 +85,7 @@ void shift_run(SDL_Renderer* rend) {
         }
       }
     }  // while event...
-    SDL_SetRenderDrawColor(rend, 0, 0, 0, 255);
+    SDL_CHANGE_COLOR(rend, c16_black, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(rend);
 
     draw_statics(rend);

@@ -7,8 +7,6 @@ extern const int main_win_width;
 #define HALF_SCREEN_WIDTH main_win_width / 2
 #define HALF_SCREEN_HEIGHT main_win_height / 2
 
-#define ALPHA_OPAQUE 255
-
 typedef struct {
   int c_red;
   int c_green;

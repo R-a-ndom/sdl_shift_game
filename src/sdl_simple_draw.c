@@ -25,7 +25,7 @@ void sdl_draw_arc(SDL_Renderer* rend,
 
   current_point.radius = rad;
 
-  arc_points_count = ((angle_end - angle_start) / angle_step) + 1;
+  arc_points_count = ( (angle_end - angle_start) / angle_step) + 1;
 
   arc_points = (SDL_Point *) malloc(sizeof(SDL_Point) * arc_points_count);
 
@@ -119,17 +119,17 @@ void sdl_draw_filleted_frame(SDL_Renderer* rend, SDL_Point frame_start,
                       frame_width, frame_height, radius);
   arc_center.x = frame_start.x + radius;
   arc_center.y = frame_start.y + radius;
-  sdl_draw_arc(rend, arc_center.x, arc_center.y, radius, 180.0, 270.0);
+  sdl_draw_arc(rend, arc_center.x, arc_center.y, radius, DEG_180, DEG_270);
 
   arc_center.x = frame_start.x + frame_width - radius;
   arc_center.y = frame_start.y + radius;
-  sdl_draw_arc(rend, arc_center.x, arc_center.y, radius, 270.0, 360.0);
+  sdl_draw_arc(rend, arc_center.x, arc_center.y, radius, DEG_270, DEG_360);
 
   arc_center.x = frame_start.x + radius;
   arc_center.y = frame_start.y + frame_height - radius;
-  sdl_draw_arc(rend, arc_center.x, arc_center.y, radius, 90.0, 180.0);
+  sdl_draw_arc(rend, arc_center.x, arc_center.y, radius, DEG_90, DEG_180);
 
   arc_center.x = frame_start.x + frame_width - radius;
   arc_center.y = frame_start.y + frame_height - radius;
-  sdl_draw_arc(rend, arc_center.x, arc_center.y, radius, 0.0, 90.0);
+  sdl_draw_arc(rend, arc_center.x, arc_center.y, radius, DEG_0, DEG_90);
 }
