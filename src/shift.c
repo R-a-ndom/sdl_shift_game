@@ -10,19 +10,66 @@
 const game_field source_field =
   { {  1,  2,  3,  4 },
     {  5,  6,  7,  8 },
-    {  9, 10, 11, 12 }, 
+    {  9, 10, 11, 12 },
     { 13, 14, 15,  0 } };
 
-const cell_pos begin_empty_cell_pos = { 3, 3 };
+const cell_pos empty_cell_begin_pos = { 3, 3 };
 
-static void copy_field(const game_field source, game_field dest)
-{
+static void copy_field(const game_field source, game_field dest) {
   int i, j;
   for(i = 0; i < field_size; i++) {
     for(j = 0; j < field_size; j++) {
       dest[i][j] = source[i][j];
     }
   }
+}
+
+static void fill_empty_pos(game_field field,
+                           cell_pos* empty_cell_pos,
+                           int shift_row, int shift_col) {
+  cell_pos new_empty_pos;
+
+  new_empty_pos.pos_x = empty_cell_pos->pos_x + shift_col;
+  new_empty_pos.pos_y = empty_cell_pos->pos_y + shift_row;
+
+  field[empty_cell_pos->pos_x][empty_cell_pos->pos_y] =
+       field[new_empty_pos.pos_x][new_empty_pos.pos_y];
+
+  field[new_empty_pos.pos_x][new_empty_pos.pos_y] = 0;
+
+  *empty_cell_pos = new_empty_pos;
+}
+
+static void player_turn(game_field field, cell_pos* pos, int app_state) {
+  switch (app_state) {
+    case state_move_up : {
+      if ( pos->pos_y < field_size-1 ) {
+        fill_empty_pos(field, pos, 1, 0);
+      }
+      break;
+    }
+    case state_move_down : {
+      if ( pos->pos_y > 0 ) {
+        fill_empty_pos(field, pos, -1, 0);
+      }
+      break;
+    }
+    case state_move_left : {
+      if ( pos->pos_x < field_size-1 ) {
+        fill_empty_pos(field, pos, 0, 1);
+      }
+      break;
+    }
+    case state_move_right : {
+      if ( pos->pos_x > 0 ) {
+        fill_empty_pos(field, pos, 0, -1);
+      }
+      break;
+    }
+    default : {
+      break;
+    }
+  }  /* switch (app_state) */
 }
 
 static int handle_keyboard_event(SDL_Event* event) {
@@ -58,12 +105,13 @@ void shift_run(SDL_Renderer* rend) {
   SDL_Event main_ev;
   int app_state;
   game_field main_field;
+  cell_pos empty_cell_pos;
 #ifdef DEBUG  /* debug mode - draw a littse cross in screen middle */
   cross_state debug_cross_state;
   debug_cross_state.size = debug_cross_min;
   debug_cross_state.growing = cross_grow;
 #endif
-
+  empty_cell_pos = empty_cell_begin_pos;
   copy_field(source_field, main_field);
 
 /* MAIN CYCLE */
@@ -81,10 +129,11 @@ void shift_run(SDL_Renderer* rend) {
         }
         case SDL_KEYDOWN: {
           app_state = handle_keyboard_event(&main_ev);
+          player_turn(main_field, &empty_cell_pos, app_state);
           break;
         }
-      }
-    }  // while event...
+      }  /* switch (.....) */
+    }    /* while event... */
     SDL_CHANGE_COLOR(rend, c16_black, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(rend);
 

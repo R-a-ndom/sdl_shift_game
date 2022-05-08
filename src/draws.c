@@ -49,8 +49,7 @@ void draw_statics(SDL_Renderer* rend)
   SDL_CHANGE_COLOR(rend, c16_magenta, SDL_ALPHA_OPAQUE);
   sdl_draw_chamfered_frame(rend,
                            big_frame_draw_start,
-                           big_frame_width,
-                           big_frame_height,
+                           big_frame_width, big_frame_height,
                            big_frame_chamfer);
 }
 
@@ -98,11 +97,11 @@ static void draw_one_cell(SDL_Renderer* rend,
 void draw_all_field(SDL_Renderer* rend, const game_field field)
 {
   SDL_CHANGE_COLOR(rend, c16_cyan, SDL_ALPHA_OPAQUE);
-  int i, j;
-  for(i = 0; i < field_size; i++) {
-    for(j = 0; j < field_size; j++) {
-      if ( field[i][j] != cell_empty ) {
-        draw_one_cell(rend, i, j, field[j][i]);
+  int row, col;
+  for(row = 0; row < field_size; row++) {
+    for(col = 0; col < field_size; col++) {
+      if ( field[row][col] != cell_empty ) {
+        draw_one_cell(rend, row, col, field[row][col]);
       }
     }
   }
