@@ -1,7 +1,7 @@
 #ifndef SHIFT_H
 #define SHIFT_H
 
-extern const game_field start_field;
+extern const game_field source_field;
 
 extern const cell_pos empty_cell_begin_pos;
 

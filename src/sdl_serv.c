@@ -20,6 +20,8 @@ const rgb_color_def c16_yellow  = { 255, 255,   0 };
 const rgb_color_def c16_magenta = { 255,   0, 255 };
 const rgb_color_def c16_cyan    = {   0, 255, 255 };
 
+const rgb_color_def c16_gray    = { 128, 128, 128 };
+
 const rgb_color_def c16_white = { 255, 255, 255 };
 
 int app_close(SDL_Window* app_win, SDL_Renderer* app_rend, int exit_code)

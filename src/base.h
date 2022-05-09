@@ -23,8 +23,8 @@ enum {
 typedef int game_field[field_size][field_size];
 
 typedef struct {
-  int pos_x;
-  int pos_y;
+  int c_row;
+  int c_col;
 } cell_pos;
 
 #endif

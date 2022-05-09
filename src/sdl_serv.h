@@ -26,6 +26,8 @@ extern const rgb_color_def c16_yellow;
 extern const rgb_color_def c16_magenta;
 extern const rgb_color_def c16_cyan;
 
+extern const rgb_color_def c16_gray;
+
 extern const rgb_color_def c16_white;
 
 

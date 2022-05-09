@@ -6,15 +6,15 @@
 #include "sdl_digit_seven.h"
 
 #include "base.h"
+#include "field.h"
 #include "draws.h"
 
-static const SDL_Point field_draw_start = {125, 105};
-static const SDL_Point big_frame_draw_start = {110, 90};
+static const SDL_Point field_draw_start = { 125, 105 };
+static const SDL_Point big_frame_draw_start = { 110, 90 };
 
 #ifdef DEBUG /* debug mode - drawing little cross in the screen middle */
 
-void debug_next_cross_state(cross_state* state)
-{
+void debug_next_cross_state(cross_state* state) {
   if (state->growing == cross_grow) {
     if (state->size == debug_cross_max) {
       state->growing = cross_shrink;
@@ -31,8 +31,7 @@ void debug_next_cross_state(cross_state* state)
 }
 
 void debug_draw_cross(SDL_Renderer* rend,
-                             cross_state c_state)
-{
+                      cross_state c_state) {
   SDL_CHANGE_COLOR(rend, c16_yellow, SDL_ALPHA_OPAQUE);
   SDL_RenderDrawLine(rend,
                      HALF_SCREEN_WIDTH, HALF_SCREEN_HEIGHT - c_state.size,
@@ -44,8 +43,7 @@ void debug_draw_cross(SDL_Renderer* rend,
 
 #endif
 
-void draw_statics(SDL_Renderer* rend)
-{
+void draw_statics(SDL_Renderer* rend) {
   SDL_CHANGE_COLOR(rend, c16_magenta, SDL_ALPHA_OPAQUE);
   sdl_draw_chamfered_frame(rend,
                            big_frame_draw_start,
@@ -70,13 +68,12 @@ static int calc_cell_vert_pos_start(int pos) {
 }
 
 static void draw_one_cell(SDL_Renderer* rend,
-                          int h_pos, int v_pos, int value)
-{
+                          int h_pos, int v_pos, int value) {
   SDL_Point cell_draw_start;
   SDL_Point value_draw_start;
 
-  cell_draw_start.x = calc_cell_horiz_pos_start(h_pos);
-  cell_draw_start.y = calc_cell_vert_pos_start(v_pos);
+  cell_draw_start.x = calc_cell_horiz_pos_start(v_pos);
+  cell_draw_start.y = calc_cell_vert_pos_start(h_pos);
 
   value_draw_start.x = cell_draw_start.x + cell_value_draw_gap;
   value_draw_start.y = cell_draw_start.y + cell_value_draw_gap;
@@ -94,13 +91,16 @@ static void draw_one_cell(SDL_Renderer* rend,
                               cell_value_digit_length, value);
 }
 
-void draw_all_field(SDL_Renderer* rend, const game_field field)
-{
-  SDL_CHANGE_COLOR(rend, c16_cyan, SDL_ALPHA_OPAQUE);
+void draw_all_field(SDL_Renderer* rend, const game_field field) {
   int row, col;
   for(row = 0; row < field_size; row++) {
     for(col = 0; col < field_size; col++) {
       if ( field[row][col] != cell_empty ) {
+        if ( field[row][col] == source_field[row][col] ) {
+          SDL_CHANGE_COLOR(rend, c16_cyan, SDL_ALPHA_OPAQUE);
+        } else {
+          SDL_CHANGE_COLOR(rend, c16_gray, SDL_ALPHA_OPAQUE);
+        }
         draw_one_cell(rend, row, col, field[row][col]);
       }
     }

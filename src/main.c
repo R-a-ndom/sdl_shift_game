@@ -13,6 +13,7 @@
 #include "sdl_digit_seven.h"
 
 #include "base.h"
+#include "field.h"
 #include "shift.h"
 
 const char main_win_caption[] = "SHIFT (SDL 2.0 demo)";
