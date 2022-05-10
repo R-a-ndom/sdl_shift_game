@@ -1,6 +1,9 @@
 #ifndef FIELD_H
 #define FIELD_H
 
+#define MIX_COUNT 10
+#define MIX_MIN 3
+
 typedef int field_sequence[max_field_value];
 
 extern const game_field source_field;

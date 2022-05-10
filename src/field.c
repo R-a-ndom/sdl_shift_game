@@ -1,6 +1,8 @@
 #ifdef DEBUG
 #include <stdio.h>
 #endif
+#include <stdlib.h>
+#include <time.h>
 
 #include "base.h"
 #include "field.h"
@@ -33,6 +35,26 @@ static void generate_field_sequence(field_sequence seq) {
   }
 }
 
+static void mix_field_sequence(field_sequence seq) {
+  int i,count;
+  int tmp;
+  int rnd_num;
+  for(count = 0; count < MIX_COUNT; count++) {
+    for(i = max_field_value - 1; i >= MIX_MIN; i--) {
+      rnd_num = (int)((float)i*rand() / (RAND_MAX + 1.0 ));
+#ifdef DEBUG
+      printf("%d & %d | %d > ", count, rnd_num, i);
+#endif
+      tmp = seq[i];
+      seq[i] = seq[rnd_num];
+      seq[rnd_num] = tmp;
+#ifdef DEBUG
+      debug_print_field_sequence(seq);
+#endif
+    }
+  }
+}
+
 static void fill_game_field(field_sequence src_seq, game_field dst_field) {
   int i, j;
   for(i = 0, j = 3; i < 4; i++, j--) {
@@ -49,7 +71,9 @@ static void fill_game_field(field_sequence src_seq, game_field dst_field) {
 void generate_game_field(game_field field) {
   field_sequence seq;
 
+  srand(time(NULL));
   generate_field_sequence(seq);
+  mix_field_sequence(seq);
 #ifdef DEBUG
   debug_print_field_sequence(seq);
 #endif
