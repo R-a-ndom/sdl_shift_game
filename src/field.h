@@ -1,9 +1,15 @@
 #ifndef FIELD_H
 #define FIELD_H
 
+typedef int field_sequence[max_field_value];
+
 extern const game_field source_field;
 
 extern const cell_pos empty_cell_begin_pos;
+
+/* --- === --- */
+
+void generate_game_field(game_field field);
 
 void copy_field(const game_field source, game_field dest);
 

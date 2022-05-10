@@ -1,3 +1,7 @@
+#ifdef DEBUG
+#include <stdio.h>
+#endif
+
 #include "base.h"
 #include "field.h"
 
@@ -8,6 +12,49 @@ const game_field source_field =
     { 13, 14, 15,  0 } };
 
 const cell_pos empty_cell_begin_pos = { 3, 3 };
+
+#ifdef DEBUG
+
+static void debug_print_field_sequence(field_sequence seq) {
+  int i;
+  printf("sequence : [ ");
+  for( i = 0; i < max_field_value; i++ ) {
+    printf("%d ", seq[i]);
+  }
+  printf("]\n");
+}
+
+#endif
+
+static void generate_field_sequence(field_sequence seq) {
+  int i;
+  for( i = 0; i < max_field_value; i++ ) {
+    seq[i] = i + 1;
+  }
+}
+
+static void fill_game_field(field_sequence src_seq, game_field dst_field) {
+  int i, j;
+  for(i = 0, j = 3; i < 4; i++, j--) {
+    dst_field[0][i] = src_seq[j];
+    dst_field[1][i] = src_seq[i + 4];
+    dst_field[2][i] = src_seq[j + 8];
+  }
+  for(i = 0; i < 3; i++) {
+    dst_field[3][i] = src_seq[i + 12];
+  }
+  dst_field[3][3] = cell_empty;
+}
+
+void generate_game_field(game_field field) {
+  field_sequence seq;
+
+  generate_field_sequence(seq);
+#ifdef DEBUG
+  debug_print_field_sequence(seq);
+#endif
+  fill_game_field(seq, field);
+}
 
 void copy_field(const game_field source, game_field dest) {
   int i, j;

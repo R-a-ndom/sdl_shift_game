@@ -12,25 +12,25 @@
 static void player_turn(game_field field, cell_pos* pos, int app_state) {
   switch (app_state) {
     case state_move_up : {
-      if ( pos->cell_row < field_size-1 ) {
+      if ( pos->c_row < field_size-1 ) {
         fill_empty_pos(field, pos, 1, 0);
       }
       break;
     }
     case state_move_down : {
-      if ( pos->cell_row > 0 ) {
+      if ( pos->c_row > 0 ) {
         fill_empty_pos(field, pos, -1, 0);
       }
       break;
     }
     case state_move_left : {
-      if ( pos->cell_col < field_size-1 ) {
+      if ( pos->c_col < field_size-1 ) {
         fill_empty_pos(field, pos, 0, 1);
       }
       break;
     }
     case state_move_right : {
-      if ( pos->cell_col > 0 ) {
+      if ( pos->c_col > 0 ) {
         fill_empty_pos(field, pos, 0, -1);
       }
       break;
@@ -82,7 +82,7 @@ void shift_run(SDL_Renderer* rend) {
 #endif
 
   empty_cell_pos = empty_cell_begin_pos;
-  copy_field(source_field, main_field);
+  generate_game_field(main_field);
   app_state = state_continue;
 
 /* MAIN CYCLE */

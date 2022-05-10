@@ -7,6 +7,7 @@ enum {
 
 enum {
   field_size = 4,
+  max_field_value = 15,
 };
 
 enum {
