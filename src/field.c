@@ -55,6 +55,21 @@ static void mix_field_sequence(field_sequence seq) {
   }
 }
 
+static int check_parity(field_sequence seq) {
+  int i, parity_count;
+  parity_count = 0;
+  for(i = 0; i < max_field_value - 1; i++) {
+    if ( seq[i+1] > seq[i] ) {
+      parity_count++;
+    }
+  }
+  if (0 == parity_count % 2 ) {
+    return 0;
+  } else {
+    return 1;
+  }
+}
+
 static void fill_game_field(field_sequence src_seq, game_field dst_field) {
   int i, j;
   for(i = 0, j = 3; i < 4; i++, j--) {
@@ -76,6 +91,7 @@ void generate_game_field(game_field field) {
   mix_field_sequence(seq);
 #ifdef DEBUG
   debug_print_field_sequence(seq);
+  printf("%s", check_parity(seq) ? "Solvable!\n" : "Unsolvable...\n");
 #endif
   fill_game_field(seq, field);
 }
