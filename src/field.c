@@ -1,6 +1,7 @@
 #ifdef DEBUG
-#include <stdio.h>
+  #include <stdio.h>
 #endif
+
 #include <stdlib.h>
 #include <time.h>
 
@@ -57,7 +58,6 @@ static void mix_field_sequence(field_sequence seq) {
   }
 }
 
-
 static void fill_game_field(field_sequence src_seq, game_field dst_field) {
   int i, j;
   for(i = 0, j = 3; i < 4; i++, j--) {
@@ -106,4 +106,41 @@ void fill_empty_pos(game_field field,
   field[new_empty_pos.c_row][new_empty_pos.c_col] = 0;
 
   *empty_cell_pos = new_empty_pos;
+}
+
+int puzzle_solved(game_field field) {
+  int row, col, found_solving;
+#ifdef DEBUG
+  int match_count;
+  match_count = 0;
+#endif
+  found_solving = BOOL_TRUE;
+  for(row = 0; row < field_size; row++) {
+    for(col = 0; col < field_size; col++) {
+      if ( field[row][col] != source_field[row][col] ) {
+        found_solving = BOOL_FALSE;
+        break;
+#ifdef DEBUG
+      } else {
+        match_count++;
+      }
+#else
+      }
+#endif
+    }
+    if ( !found_solving ) {
+      break;
+    }
+  }
+  if (found_solving) {
+#ifdef DEBUG
+    printf("%d > SOLVED !\n", match_count);
+#endif
+    return BOOL_TRUE;
+  } else {
+#ifdef DEBUG
+    printf("%d > ", match_count);
+#endif
+    return BOOL_FALSE;
+  }
 }

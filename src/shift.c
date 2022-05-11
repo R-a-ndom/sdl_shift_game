@@ -99,6 +99,11 @@ void shift_run(SDL_Renderer* rend) {
         case SDL_KEYDOWN: {
           app_state = handle_keyboard_event(&main_ev);
           player_turn(main_field, &empty_cell_pos, app_state);
+          if ( puzzle_solved(main_field) ) {
+            app_state = state_quit;
+          } else {
+            app_state = state_continue;
+          }
           break;
         }
       }  /* switch (.....) */

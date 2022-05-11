@@ -20,4 +20,6 @@ void fill_empty_pos(game_field field,
                     cell_pos* empty_cell_pos,
                     int shift_row, int shift_col);
 
+int puzzle_solved(game_field field);
+
 #endif

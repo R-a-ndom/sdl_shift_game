@@ -1,6 +1,10 @@
 #ifndef BASE_H
 #define BASE_H
 
+#define BOOL_TRUE 1
+#define BOOL_FALSE 0
+
+
 enum {
   cell_empty, cell_filled,
 };
