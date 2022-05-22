@@ -1,3 +1,17 @@
+/* * * * * * * * * * * * * * * * * * * *
+ *  SDL_SHIFT_GAME                     *
+ *        (and other projects)         *
+ *                                     *
+ *  SDL 2.0 demo - fifteen-like game   *
+ *                                     *
+ *  SDL_SERV.H - service functions,    *
+ *               constants and types   *
+ *               for SDL 2.0           *
+ *                                     *
+ *          (c) Alexey Sorokin, 2022   *
+ * * * * * * * * * * * * * * * * * * * *
+ */
+
 #ifndef SDL_SERV_H
 #define SDL_SERV_H
 

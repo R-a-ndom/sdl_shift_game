@@ -1,3 +1,15 @@
+/* * * * * * * * * * * * * * * * * * * *
+ *  SDL_SHIFT_GAME                     *
+ *                                     *
+ *  SDL 2.0 demo - fifteen-like game   *
+ *                                     *
+ *  FIELD.C - game field               *
+ *            functions etc.           *
+ *                                     *
+ *          (c) Alexey Sorokin, 2022   *
+ * * * * * * * * * * * * * * * * * * * *
+ */
+
 #ifdef DEBUG
   #include <stdio.h>
 #endif

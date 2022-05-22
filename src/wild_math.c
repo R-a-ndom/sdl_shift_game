@@ -1,8 +1,15 @@
-/*
- * --- wild_math.c ---
- *
- * Mathematic functions
- *
+/* * * * * * * * * * * * * * * * * * * *
+ *  SDL_SHIFT_GAME                     *
+ *        (and other projects)         *
+ *                                     *
+ *  SDL 2.0 demo - fifteen-like game   *
+ *                                     *
+ *  WILD_MATH.C -                      *
+ *        math functions               *
+ *        and types (SDL 2.0)          *
+ *                                     *
+ *          (c) Alexey Sorokin, 2022   *
+ * * * * * * * * * * * * * * * * * * * *
  */
 
 #include <math.h>

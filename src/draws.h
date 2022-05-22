@@ -1,8 +1,22 @@
+/* * * * * * * * * * * * * * * * * * * *
+ *  SDL_SHIFT_GAME                     *
+ *                                     *
+ *  SDL 2.0 demo - fifteen-like game   *
+ *                                     *
+ *  DRAWS.H - game elements            *
+ *            drawing unit             *
+ *                                     *
+ *          (c) Alexey Sorokin, 2022   *
+ * * * * * * * * * * * * * * * * * * * *
+ */
+
+
 #ifndef DRAWS_H
 #define DRAWS_H
 
 
 #ifdef DEBUG  /* debug mode - little cross in middle */
+
 enum {
   cross_shrink =  0,
   cross_grow   =  1,

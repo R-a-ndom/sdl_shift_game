@@ -1,3 +1,16 @@
+/* * * * * * * * * * * * * * * * * * * *
+ *  SDL_SHIFT_GAME                     *
+ *                                     *
+ *  SDL 2.0 demo - fifteen-like game   *
+ *                                     *
+ *  FIELD.H - game field               *
+ *            functions etc.           *
+ *                                     *
+ *          (c) Alexey Sorokin, 2022   *
+ * * * * * * * * * * * * * * * * * * * *
+ */
+
+
 #ifndef FIELD_H
 #define FIELD_H
 

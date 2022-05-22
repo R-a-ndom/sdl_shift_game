@@ -1,3 +1,15 @@
+/* * * * * * * * * * * * * * * * * * * *
+ *  SDL_SHIFT_GAME                     *
+ *                                     *
+ *  SDL 2.0 demo - fifteen-like game   *
+ *                                     *
+ *  SHIFT.C - base game                *
+ *            functions                *
+ *                                     *
+ *          (c) Alexey Sorokin, 2022   *
+ * * * * * * * * * * * * * * * * * * * *
+ */
+
 #include <SDL2/SDL.h>
 
 #include "base.h"
@@ -119,7 +131,7 @@ void shift_run(SDL_Renderer* rend) {
     draw_all_field(rend, main_field);
 
     SDL_RenderPresent(rend);
-    SDL_Delay(FPS_50);
+    SDL_Delay(FRAME_TIME);
 
   } // while app_is_running...
 }

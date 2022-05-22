@@ -1,7 +1,20 @@
+/* * * * * * * * * * * * * * * * * * * *
+ *  SDL_SHIFT_GAME                     *
+ *        (and other projects)         *
+ *                                     *
+ *  SDL 2.0 demo - fifteen-like game   *
+ *                                     *
+ *  SDL_SIMPLE_DRAW.H -                *
+ *        drawing functions (SDL 2.0)  *
+ *                                     *
+ *          (c) Alexey Sorokin, 2022   *
+ * * * * * * * * * * * * * * * * * * * *
+ */
+
 #ifndef SDL_SIMPLE_DRAW_H
 #define SDL_SIMPLE_DRAW_H
 
-#define FPS_50 50
+#define FRAME_TIME 50
 
 #define DEG_0     0.0
 #define DEG_90   90.0
@@ -26,6 +39,7 @@ void sdl_draw_filleted_frame(SDL_Renderer* rend, SDL_Point frame_start,
 
 
 #define sdl_draw_circle(render, center_x, center_y, radius) \
-        sdl_draw_arc( (render), (center_x), (center_y), (radius), DEG_0, DEG_360 )
+        sdl_draw_arc( (render), (center_x), (center_y), \
+        (radius), DEG_0, DEG_360 )
 
 #endif

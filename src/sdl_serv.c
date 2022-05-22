@@ -1,3 +1,17 @@
+/* * * * * * * * * * * * * * * * * * * *
+ *  SDL_SHIFT_GAME                     *
+ *        (and other projects)         *
+ *                                     *
+ *  SDL 2.0 demo - fifteen-like game   *
+ *                                     *
+ *  SDL_SERV.C - service functions,    *
+ *               constants and types   *
+ *               for SDL 2.0           *
+ *                                     *
+ *          (c) Alexey Sorokin, 2022   *
+ * * * * * * * * * * * * * * * * * * * *
+ */
+
 #include <SDL2/SDL.h>
 #include <stdio.h>
 #include <stdlib.h>

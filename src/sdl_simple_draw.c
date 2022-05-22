@@ -1,3 +1,16 @@
+/* * * * * * * * * * * * * * * * * * * *
+ *  SDL_SHIFT_GAME                     *
+ *        (and other projects)         *
+ *                                     *
+ *  SDL 2.0 demo - fifteen-like game   *
+ *                                     *
+ *  SDL_SIMPLE_DRAW.C -                *
+ *        drawing functions (SDL 2.0)  *
+ *                                     *
+ *          (c) Alexey Sorokin, 2022   *
+ * * * * * * * * * * * * * * * * * * * *
+ */
+
 #include <SDL2/SDL.h>
 #include <math.h>
 
@@ -6,10 +19,8 @@
 
 const double angle_step = 0.5;
 
-
-// angle - in radians
-
-// angle_start and angle_end - in degrees
+/* angle - in radians
+   angle_start and angle_end - in degrees */
 
 void sdl_draw_arc(SDL_Renderer* rend,
                   int center_x,

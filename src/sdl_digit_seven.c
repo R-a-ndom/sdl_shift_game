@@ -1,3 +1,18 @@
+/* * * * * * * * * * * * * * * * * * * *
+ *  SDL_SHIFT_GAME                     *
+ *        (and other projects)         *
+ *                                     *
+ *  SDL 2.0 demo - fifteen-like game   *
+ *                                     *
+ *  SDL_DIGIT_SEVEN.C -                *
+ *        drawing numbers              *
+ *        in seven-segment indicator   *
+ *        style (SDL 2.0)              *
+ *                                     *
+ *          (c) Alexey Sorokin, 2022   *
+ * * * * * * * * * * * * * * * * * * * *
+ */
+
 #include <SDL2/SDL.h>
 
 #include "sdl_digit_seven.h"

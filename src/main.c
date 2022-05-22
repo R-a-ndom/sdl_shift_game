@@ -1,5 +1,12 @@
-/*
-  SDL 2.0 demo - grid shifting demo
+/* * * * * * * * * * * * * * * * * * * *
+ *  SDL_SHIFT_GAME                     *
+ *                                     *
+ *  SDL 2.0 demo - fifteen-like game   *
+ *                                     *
+ *  MAIN.C - main file                 *
+ *                                     *
+ *          (c) Alexey Sorokin, 2022   *
+ * * * * * * * * * * * * * * * * * * * *
  */
 
 #include <SDL2/SDL.h>
@@ -18,10 +25,9 @@
 
 const char main_win_caption[] = "SHIFT (SDL 2.0 demo)";
 
-// *** *** *** *** *** *** *** ***
-// *** ***  INT MAIN(...)  *** ***
-// *** *** *** *** *** *** *** ***
-
+/* *** *** *** *** *** *** *** ***
+   *** ***  INT MAIN(...)  *** ***
+   *** *** *** *** *** *** *** *** */
 int main(int argc, char *argv[])
 {
   SDL_Window* main_win = NULL;
