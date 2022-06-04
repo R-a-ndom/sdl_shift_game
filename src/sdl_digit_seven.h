@@ -20,7 +20,12 @@
 #define MAX_SEGMENTS     7
 #define MAX_DIGITS      10
 
+#define FAT_SEGMENT_GAP   0.1
+#define FAT_SEGMENT_WIDTH 0.1
+
 enum { dir_horizontal, dir_vertical };
+
+enum { seg_thin, seg_fat };
 
 typedef struct {
   short int shift_horizontal;
@@ -31,8 +36,9 @@ typedef struct {
 typedef short int digit_sequence[MAX_DIGITS];
 
 void sdl_draw_seven_digit_number(SDL_Renderer* rend,
-                                 const SDL_Point number_start,
+                                 const int segment_type,
                                  const int digit_length,
+                                 const SDL_Point number_start,
                                  const unsigned int number);
 
 #endif

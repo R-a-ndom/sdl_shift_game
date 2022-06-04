@@ -99,8 +99,8 @@ static void draw_one_cell(SDL_Renderer* rend,
                            cell_width, cell_height,
                            cell_chamfer);
   sdl_draw_seven_digit_number(rend,
-                              value_draw_start,
-                              cell_value_digit_length, value);
+                              seg_fat, cell_value_digit_length,
+                              value_draw_start, value);
 }
 
 void draw_all_field(SDL_Renderer* rend, const game_field field) {
