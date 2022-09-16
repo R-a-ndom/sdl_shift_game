@@ -57,7 +57,7 @@ void debug_draw_cross(SDL_Renderer* rend,
 
 void draw_statics(SDL_Renderer* rend) {
   SDL_CHANGE_COLOR(rend, c16_magenta, SDL_ALPHA_OPAQUE);
-  sdl_draw_chamfered_frame(rend,
+  sdl_draw_filleted_frame(rend,
                            big_frame_draw_start,
                            big_frame_width, big_frame_height,
                            big_frame_chamfer);
@@ -94,7 +94,7 @@ static void draw_one_cell(SDL_Renderer* rend,
     value_draw_start.x += cell_value_digit_length ;
   }
 
-  sdl_draw_chamfered_frame(rend,
+  sdl_draw_filleted_frame(rend,
                            cell_draw_start,
                            cell_width, cell_height,
                            cell_chamfer);

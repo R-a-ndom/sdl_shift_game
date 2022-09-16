@@ -34,13 +34,13 @@ typedef struct cross_state {
 enum {
   big_frame_width = 1060,
   big_frame_height = 540,
-  big_frame_chamfer = 17,
+  big_frame_chamfer = 25,
 };
 
 enum {
   cell_width = 250,
   cell_height = 120,
-  cell_chamfer = 5,
+  cell_chamfer = 15,
   cell_gap = 10,
   cell_value_draw_gap = 15,
   cell_value_digit_length = 40,

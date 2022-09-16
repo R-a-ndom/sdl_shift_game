@@ -87,7 +87,7 @@ void shift_run(SDL_Renderer* rend) {
   int app_state;
   game_field main_field;
   cell_pos empty_cell_pos;
-#ifdef DEBUG  /* debug mode - draw a littse cross in screen middle */
+#ifdef DEBUG  /* debug mode - draw a little cross in middle of screen */
   cross_state debug_cross_state;
   debug_cross_state.size = debug_cross_min;
   debug_cross_state.growing = cross_grow;
@@ -110,11 +110,13 @@ void shift_run(SDL_Renderer* rend) {
         }
         case SDL_KEYDOWN: {
           app_state = handle_keyboard_event(&main_ev);
-          player_turn(main_field, &empty_cell_pos, app_state);
-          if ( puzzle_solved(main_field) ) {
-            app_state = state_quit;
-          } else {
-            app_state = state_continue;
+          if (app_state != state_quit) {
+            player_turn(main_field, &empty_cell_pos, app_state);
+            if ( puzzle_solved(main_field) ) {
+              app_state = state_quit;
+            } else {
+              app_state = state_continue;
+            }
           }
           break;
         }

@@ -44,7 +44,7 @@ static void calc_segment_draw_start(SDL_Point* digit_draw_start,
                                     const int digit_length,
                                     const segment_info info)
 {
-  segment_draw_start->x = digit_draw_start->x + 
+  segment_draw_start->x = digit_draw_start->x +
                           info.shift_horizontal * digit_length;
   segment_draw_start->y = digit_draw_start->y +
                           info.shift_vertical * digit_length;
@@ -53,14 +53,11 @@ static void calc_segment_draw_start(SDL_Point* digit_draw_start,
 static int generate_digit_sequence(unsigned int src_num, digit_sequence seq)
 {
   int i = 0;
-
-  if ( src_num >= 10 ) {
-    do {
-      seq[i] = src_num % 10;
-      i++;
-      src_num /= 10;
-    } while (src_num > 10); // DO-WHILE
-  }
+  if ( src_num >= 10 ) do {
+    seq[i] = src_num % 10;
+    i++;
+    src_num /= 10;
+  } while (src_num > 10); // DO-WHILE
   seq[i] = src_num;
   i++;
   return i;
@@ -71,7 +68,6 @@ static void draw_thin_segment(SDL_Renderer* rend,
                               int digit_length, segment_info info)
 {
   SDL_Point segment_draw_start;
-
   calc_segment_draw_start(digit_draw_start,
                           &segment_draw_start,
                           digit_length, info);
@@ -132,8 +128,6 @@ static void draw_fat_segment(SDL_Renderer* rend,
                                     segment_half_width;
     segment_bottom_or_right_end.y = segment_rel_draw_end.y +
                                     segment_half_width;
-
-
   } else {
     segment_rel_draw_start.x = segment_draw_start.x;
     segment_rel_draw_start.y = segment_draw_start.y + segment_edge_gap;
