@@ -27,7 +27,7 @@ library_list='-lSDL2 -lm'
 output_bin_file='sdl_shift'
 
 source_files_list=( "sdl_serv" "sdl_simple_draw"
-  "wild_math" "sdl_digit_seven" "field" "draws" "shift")
+  "wild_math" "sdl_digit_seven" "sdl_text_simple" "field" "draws" "shift" )
 
 # FUNCTIONS
 
